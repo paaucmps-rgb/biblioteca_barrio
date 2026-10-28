@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca de componentes</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; margin: 40px; }
+        h1 { font-size: 24px; color: #2c3e50; }
+        .sub { font-size: 14px; color: #666; margin-bottom: 20px; }
+        .card { background: white; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; font-size: 14px; }
+        th { color: #555; }
+        input[type="text"] { width: 70%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #555; color: white; border: none; padding: 9px 15px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #333; }
+    </style>
+</head>
+<body>
+
+    <h1>Biblioteca de componentes</h1>
+    <div class="sub">Tres componentes que colaboran sin conocer su interior. Los datos viven en memoria: al parar el servidor se pierden.</div>
+
+    <div class="card">
+        <h3>Libros</h3>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+            {% for libro in libros %}
+            <tr>
+                <td>{{ libro.id }}</td>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.estado }}</td>
+                <td>{{ libro.accion }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <form action="/agregar" method="POST">
+            <input type="text" name="titulo" placeholder="Título del libro nuevo" required>
+            <button type="submit">Añadir libro</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Socios</h3>
+        <p style="font-size: 13px; color: #666;">Gestión de socios activa en el sistema.</p>
+    </div>
+
+</body>
+</html>
